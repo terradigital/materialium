@@ -49,7 +49,37 @@
     </b:section>
    </header>
    <div class="tabs-outer">
-
+    <b:section class="navigation" id="navigation" maxwidgets="1" showaddelement="no">
+     <b:widget id="PageList1" locked="true" title="Navigation" type="PageList">
+      <b:includable id="main">
+       <div class="slider" id="slider">
+        <button class="close-button" title="Close menu"/>
+        <h2 class="menu-title">
+         <data:blog.title/>
+        </h2>
+        <ul class="menu">
+         <b:loop values="data:links" var="link">
+          <a expr:href="data:link.href">
+           <b:if cond="data:link.isCurrentPage">
+            <li class="selected">
+             <data:link.title/>
+            </li>
+           <b:else/>
+            <li>
+             <data:link.title/>
+            </li>
+           </b:if>
+          </a>
+         </b:loop>
+        </ul>
+        <p class="attribution">
+         <data:blog.title/>
+         <script>document.write(new Date().getFullYear());</script>
+        </p>
+       </div>
+      </b:includable>
+     </b:widget>
+    </b:section>
    </div>
    <div class="main-outer">
 
