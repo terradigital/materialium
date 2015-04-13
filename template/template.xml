@@ -19,7 +19,34 @@
 	<body id="page">
 		<div class="content-outer">
 			<header class="header-outer">
-				
+				<b:section class="header-inner" id="header" maxwidgets="1" showaddelement="no">
+     <b:widget id="Header1" locked="true" title="Header" type="Header">
+      <b:includable id="main">
+       <h1 class="blog-title">
+        <b:include name="title"/>
+        <b:if cond="data:blog.pageType == &quot;item&quot;">
+         <span class="title-separator"/>
+         <span class="title-page"><data:blog.pageName/></span>
+        </b:if>
+       </h1>
+       <b:if cond="data:blog.isMobile == &quot;false&quot;">
+        <form class="search-form" expr:action="data:blog.homepageUrl + &quot;search/&quot;" method="get">
+         <input autocomplete="off" autofocus="autofocus" class="search-input" id="s" name="q" placeholder="Search.." type="search"/>
+        </form>
+       </b:if>
+      </b:includable>
+      <b:includable id="title">
+       <b:if cond="data:blog.url == data:blog.homepageUrl">
+        <data:title/>
+       <b:else/>
+        <a expr:href="data:blog.homepageUrl">
+         <data:title/>
+        </a>
+       </b:if>
+      </b:includable>
+      <b:includable id="description"/>
+     </b:widget>
+    </b:section>
 			</header>
 			<div class="tabs-outer">
 				
