@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version="2">
+	<head>
+		<meta expr:charser="data:blog.encoding"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<title>
+			<b:if cond="data:blog.pageName"><data:blog.pageName/> | </b:if>
+			<data:blog.title/>
+		</title>
+		<b:skin>
+			<![CDATA [
+				/*
+				* Author info & styles
+				*/
+			]]>
+		</b:skin>
+	</head>
+	<body id="page">
+		<div class="content-outer">
+			<header class="header-outer">
+				
+			</header>
+			<div class="tabs-outer">
+				
+			</div>
+			<div class="main-outer">
+				
+			</div>
+		</div>
+	</body>
+</html>
