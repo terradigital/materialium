@@ -116,8 +116,22 @@
       <b:includable id="commentDeleteIcon" var="comment"></b:includable>
       <b:includable id="comment_count_picker" var="post"></b:includable>
       <b:includable id="comments" var="post"></b:includable>
-      <b:includable id="feedLinks"></b:includable>
-      <b:includable id="feedLinksBody" var="links"></b:includable>
+      <b:includable id="feedLinks">
+       <b:loop values="data:posts" var="post">
+        <b:if cond="data:post.allowComments">
+         <b:if cond="data:post.feedLinks">
+          <b:include data="post.feedLinks" name="feedLinksBody"/>
+         </b:if>
+        </b:if>
+       </b:loop>
+      </b:includable>
+      <b:includable id="feedLinksBody" var="links">
+       <b:loop values="data:links" var="f">
+        <a expr:href="data:f.url" expr:type="data:f.mimeType" rel="nofollow" target="_blank">
+         <data:feedLinksMsg/> <data:f.name/> (<data:f.feedType/>)
+        </a>
+       </b:loop>
+      </b:includable>
       <b:includable id="iframe_comments" var="post"></b:includable>
       <b:includable id="mobile-index-post" var="post"></b:includable>
       <b:includable id="mobile-main" var="post"></b:includable>
