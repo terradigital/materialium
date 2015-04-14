@@ -84,7 +84,32 @@
    <div class="main-outer">
     <b:section id="main" class="main" showaddelement="yes">
      <b:widget id="Blog1" locked="true" title="Blog Posts" type="Blog">
-      <b:includable id="main" var="top"></b:includable>
+      <b:includable id="main" var="top">
+       <b:if cond="data:mobile == &quot;false&quot;">
+        <b:include data="top" name="status-message"/>
+        <div class="posts">
+         <b:loop values="data:posts" var="post">
+          <b:include data="post" name="post"/>
+          <b:if cond="data:blog.pageType != &quot;index&quot;">
+           <b:if cond="data:post.showThreadedComments">
+            <b:include data="post" name="threaded_comments"/>
+           <b:else/>
+            <b:include data="post" name="comments"/>
+           </b:if>
+          </b:if>
+         </b:loop>
+        </div>
+        <b:if cond="data.blog.pageType != &quot;static_page&quot;">
+         <b:if cond="data:blog.pageType != &quot;error_page&quot;">
+          <b:if cond="data:blog.pageType != &quot;item&quot;">
+           <b:include name="nextprev"/>
+          </b:if>
+         </b:if>
+        </b:if>
+       <b:else/>
+        <b:include name="mobile-main"/>
+       </b:if>
+      </b:includable>
       <b:includable id="backlinkDeleteIcon" var="backlink"/>
       <b:includable id="backlinks" var="post"/>
       <b:includable id="comment-form" var="post"></b:includable>
