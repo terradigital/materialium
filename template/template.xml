@@ -82,7 +82,32 @@
     </b:section>
    </div>
    <div class="main-outer">
-
+    <b:section id="main" class="main" showaddelement="yes">
+     <b:widget id="Blog1" locked="true" title="Blog Posts" type="Blog">
+      <b:includable id="main" var="top"></b:includable>
+      <b:includable id="backlinkDeleteIcon" var="backlink"/>
+      <b:includable id="backlinks" var="post"/>
+      <b:includable id="comment-form" var="post"></b:includable>
+      <b:includable id="commentDeleteIcon" var="comment"></b:includable>
+      <b:includable id="comment_count_picker" var="post"></b:includable>
+      <b:includable id="comments" var="post"></b:includable>
+      <b:includable id="feedLinks"></b:includable>
+      <b:includable id="feedLinksBody" var="links"></b:includable>
+      <b:includable id="iframe_comments" var="post"></b:includable>
+      <b:includable id="mobile-index-post" var="post"></b:includable>
+      <b:includable id="mobile-main" var="post"></b:includable>
+      <b:includable id="mobile-nextprev"></b:includable>
+      <b:includable id="mobile-post" var="post"></b:includable>
+      <b:includable id="nextprev"></b:includable>
+      <b:includable id="post" var="post"></b:includable>
+      <b:includable id="postQuickEdit" var="post"/>
+      <b:includable id="shareButtons" var="post"></b:includable>
+      <b:includable id="status-message"></b:includable>
+      <b:includable id="threaded-comment-form" var="post"></b:includable>
+      <b:includable id="threaded-comment_js" var="post"></b:includable>
+      <b:includable id="threaded-comments" var="post"></b:includable>
+     </b:widget>
+    </b:section>
    </div>
   </div>
  </body>
