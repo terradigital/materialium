@@ -157,7 +157,13 @@
       <b:includable id="post" var="post"></b:includable>
       <b:includable id="postQuickEdit" var="post"/>
       <b:includable id="shareButtons" var="post"></b:includable>
-      <b:includable id="status-message"></b:includable>
+      <b:includable id="status-message">
+       <b:if cond="data:navMessage">
+        <div class="status">
+         <data:navMessage/>
+        </div>
+       </b:if>
+      </b:includable>
       <b:includable id="threaded-comment-form" var="post"></b:includable>
       <b:includable id="threaded-comment_js" var="post"></b:includable>
       <b:includable id="threaded-comments" var="post"></b:includable>
