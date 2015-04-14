@@ -137,7 +137,23 @@
       <b:includable id="mobile-main" var="post"></b:includable>
       <b:includable id="mobile-nextprev"></b:includable>
       <b:includable id="mobile-post" var="post"></b:includable>
-      <b:includable id="nextprev"></b:includable>
+      <b:includable id="nextprev">
+       <div class="blog-pager">
+        <b:if cond="data:newerPageUrl">
+         <a class="newer-link" expr:href="data:newerPageUrl" rel="next">
+          &lt;
+          <data:newerPageTitle/>
+         </a>
+        </b:if>
+        &#160;
+        <b:if cond="data:olderPageUrl">
+         <a class="older-link" expr:href="data:olderPageUrl" rel="prev">
+          <data:olderPageTitle/>
+          &gt;
+         </a>
+        </b:if>
+       </div>
+      </b:includable>
       <b:includable id="post" var="post"></b:includable>
       <b:includable id="postQuickEdit" var="post"/>
       <b:includable id="shareButtons" var="post"></b:includable>
