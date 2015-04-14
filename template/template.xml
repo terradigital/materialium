@@ -112,9 +112,49 @@
       </b:includable>
       <b:includable id="backlinkDeleteIcon" var="backlink"/>
       <b:includable id="backlinks" var="post"/>
-      <b:includable id="comment-form" var="post"></b:includable>
-      <b:includable id="commentDeleteIcon" var="comment"></b:includable>
-      <b:includable id="comment_count_picker" var="post"></b:includable>
+      <b:includable id="comment-form" var="post">
+       <div class="comment-form">
+        <a name="comment-form"/>
+        <h4>
+         <data:postCommentMsg/>
+        </h4>
+        <a expr:href="data:post.commentFormIframeSrc" id="comment-editor-src"/>
+        <iframe allowtransparency="true" class="blogger-iframe-colorize blogger-comment-form-post" frameborder="0" id="comment-editor" name="comment-editor" src="" style="width: 100%; height: 240px !important;"/>
+        <data:post.friendConnectJs/>
+        <data:post.cmtfpIframe/>
+        <script type="text/javascript">
+         BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;, &#39;<data:post.communityId/>&#39;);
+        </script>
+       </div>
+      </b:includable>
+      <b:includable id="commentDeleteIcon" var="comment">
+       <span expr:class="&quot;item-control &quot; + data:comment.adminClass">
+        <div class="comment-footer">
+         <a class="comment-delete-icon" expr:href="data:comment.deleteUrl">
+          <data:top.deleteCommentMsg/>
+         </a>
+        </div>
+       </span>
+      </b:includable>
+      <b:includable id="comment_count_picker" var="post">
+       <b:if cond="data:post.numComments &gt; 1">
+        - 
+        <a class="post-comment-link" expr:href="data:post.addCommentUrl" expr:title="data:postCommentMsg">
+         <data:post.commentLabelFull/>
+        </a>
+       </b:if>
+      </b:includable>
+      <b:includable id="comment_picker" var="post">
+       <b:if cond="data:post.commentSource == 1">
+        <b:include data="post" name="iframe_comments"/>
+       <b:else/>
+        <b:if cond="data:post.showThreadedComments">
+         <b:include data="post" name="threaded_comments"/>
+        <b:else/>
+         <b:include data="post" name="comments"/>
+        </b:if>
+       </b:if>
+      </b:includable>
       <b:includable id="comments" var="post"></b:includable>
       <b:includable id="feedLinks">
        <b:loop values="data:posts" var="post">
