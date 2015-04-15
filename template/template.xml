@@ -155,7 +155,96 @@
         </b:if>
        </b:if>
       </b:includable>
-      <b:includable id="comments" var="post"></b:includable>
+      <b:includable id="comments" var="post">
+       <b:if cond="data:post.allowComments">
+        <div class="comments">
+         <b:if cond="data:post.numComments &gt; 0">
+          <h4>
+           <data:post.commentLabelFull/>
+          </h4>
+          <b:include name="feedLinks"/>
+         </b:if>
+         <b:if cond="data:blogTeamBlogMessage">
+          <div class="not-allowed">
+           <data:blogTeamBlogMessage/>
+          </div>
+         </b:if>
+         <div class="comments-block">
+          <b:loop values="data:post.comments" var="comment">
+           <div class="comment" expr:id="data:comment.id">
+            <a expr:name="data:comment.anchorName"/>
+            <b:if cond="data:blog.enabledCommentProfileImages">
+             <data:comment.authorAvatarImage/>
+            </b:if>
+            <div class="comment-header">
+             <div class="comment-author">
+              <data:comment.author/>
+             </div>
+             <time>
+              <a expr:href="data:&quot;#&quot; + data:comment.id" expr:title="data:commentLabel + &quot; link to comment&quot;" rel="nofollow">
+               <data:comment.timestamp/>
+              </a>
+             </time>
+             <b:if cond="data:comment.inReplyTo">
+              in reply to 
+              <a expr:href="&quot;#&quot; + data:comment.inReplyTo">
+               this comment
+              </a>
+             </b:if>
+            </div>
+            <div class="comment-body">
+             <b:if cond="data:comment.isDeleted">
+              <div style="font-style: italic; color: #888;">
+               <data:comment.body/>
+              </div>
+             <b:else/>
+              <data:comment.body/>
+             </b:if>
+            </div>
+            <b:include data="comment" name="commentDeleteIcon"/>
+           </div>
+          </b:loop>
+         </div>
+         <b:if cond="data:post.commentPagingRequired">
+          <div class="comments-pager">
+           <b:if cond="data:post.hasOlderLinks">
+            <a expr:class="data:post.oldLinkClass" expr:href="data:post.olderLinkUrl">
+             <data:post.olderLinkText/>
+            </a>
+           </b:if>
+           <data:post.commentRangeText/>
+           <b:if cond="data:post.hasNewerLinks">
+            <a expr:class="data:post.newLinkClass" expr:href="data:post.newerLinkUrl">
+             <data:post.newerLinkText/>
+            </a>
+           </b:if>
+          </div>
+         </b:if>
+         <b:if cond="data:post.embedCommentForm">
+          <b:if cond="data:post.allowNewComments">
+           <b:include data="post" name="comment-form"/>
+          <b:esle/>
+           <div class="not-allowed">
+            <data:post.noNewCommentsText/>
+           </div>
+          </b:if>
+         <b:else/>
+          <b:if cond="data:post.allowComments">
+           <div class="iframe-comments-link">
+            <a expr:href="data:post.addCommentUrl" expr:onclick="data:post.addCommentOnclick">
+             <data:postCommentMsg/>
+            </a>
+           </div>
+          </b:if>
+         </b:if>
+         <b:if cond="data:post.showCmtPopup">
+          <div id="comment-popup">
+           <iframe allowtransparency="true" frameborder="0" id="comment-actions" name="comment-actions" scrolling="no"/>
+          </div>
+         </b:if>
+        </div>
+       </b:if>
+      </b:includable>
       <b:includable id="feedLinks">
        <b:loop values="data:posts" var="post">
         <b:if cond="data:post.allowComments">
