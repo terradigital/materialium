@@ -223,7 +223,7 @@
          <b:if cond="data:post.embedCommentForm">
           <b:if cond="data:post.allowNewComments">
            <b:include data="post" name="comment-form"/>
-          <b:esle/>
+          <b:else/>
            <div class="not-allowed">
             <data:post.noNewCommentsText/>
            </div>
@@ -359,7 +359,56 @@
        </div>
       </b:includable>
       <b:includable id="threaded-comment_js" var="post"></b:includable>
-      <b:includable id="threaded-comments" var="post"></b:includable>
+      <b:includable id="threaded-comments" var="post">
+       <div class="comments">
+        <b:if cond="data:post.numComments &gt; 0">
+         <h4>
+          <data:post.commentLabelFull/>
+         </h4>
+         <b:includable name="feedLinks"/>
+        </b:if>
+        <b:if cond="data:blogTeamBlogMessage">
+         <div class="not-allowed">
+          <data:blogTeamBlogMessage/>
+         </div>
+        </b:if>
+        <div class="comments-content">
+         <b:if cond="data:post.embedCommentForm">
+          <b:include data="post" name="threaded_comment_js"/>
+         </b:if>
+         <div id="comment-holder">
+          <data:post.commentHtml/>
+         </div>
+        </div>
+        <b:if cond="data:post.commentPagingRequired">
+         <div class="comments-pager">
+          <b:if cond="data:post.hasOlderLinks">
+           <a expr:class="data:post.oldLinkClass" expr:href="data:post.olderLinkUrl">
+            <data:post.olderLinText/>
+           </a>
+          </b:if>
+          <data:post.commentRangeText/>
+          <b:if cond="data:post.hasNewerLinks">
+           <a expr:class="data:post.newLinkClass" expr:href="data:post.newerLinkUrl">
+            <data:post.newerLinkText/>
+           </a>
+          </b:if>
+         </div>
+        </b:if>
+        <b:if cond="data:post.allowNewComments">
+         <b:include data="post" name="threaded-comment-form"/>
+        <b:else/>
+         <div class="not-allowed">
+          <data:post.noNewCommentsText/>
+         </div>
+        </b:if>
+        <b:if cond="data:showCmtPopup">
+         <div class="comment-popup">
+          <iframe allowtransparency="true" frameborder="0" id="comment-actions" name="comment-actions" scrolling="no"/>
+         </div>
+        </b:if>
+       </div>
+      </b:includable>
      </b:widget>
     </b:section>
    </div>
