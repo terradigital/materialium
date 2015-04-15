@@ -119,7 +119,7 @@
          <data:postCommentMsg/>
         </h4>
         <a expr:href="data:post.commentFormIframeSrc" id="comment-editor-src"/>
-        <iframe allowtransparency="true" class="blogger-iframe-colorize blogger-comment-form-post" frameborder="0" id="comment-editor" name="comment-editor" src="" style="width: 100%; height: 240px !important;"/>
+        <iframe allowtransparency="true" class="blogger-iframe-colorize blogger-comment-from-post" frameborder="0" id="comment-editor" name="comment-editor" src="" style="width: 100%; height: 240px !important;"/>
         <data:post.friendConnectJs/>
         <data:post.cmtfpIframe/>
         <script type="text/javascript">
@@ -346,7 +346,18 @@
         </div>
        </b:if>
       </b:includable>
-      <b:includable id="threaded-comment-form" var="post"></b:includable>
+      <b:includable id="threaded-comment-form" var="post">
+       <div class="comment-form">
+        <a name="comment-form"/>
+        <a expr:href="data:post.commentFormIframeSrc" id="comment-editor-src"/>
+        <iframe allowtransparency="true" class="blogger-iframe-colorize blogger-comment-from-post" frameborder="0" id="comment-editor" name="comment-editor" src="" style="width: 100%; height: 240px !important;"/>
+        <data:post.friendConnectJs/>
+        <data:post.cmtfpIframe/>
+        <script type="text/javascript">
+         BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;, &#39;<data:post.communityId/>&#39;);
+        </script>
+       </div>
+      </b:includable>
       <b:includable id="threaded-comment_js" var="post"></b:includable>
       <b:includable id="threaded-comments" var="post"></b:includable>
      </b:widget>
